@@ -7,6 +7,7 @@ import { setDocumentTitle } from 'common/utils';
 import { LoadScreen, PrintReceipt } from 'common/components';
 import { Menu, Receipt, ItemList, ItemEditor, ChargeDialog, ReceiptsDialog, ReportDialog, Drawer } from './components';
 import styles from './terminal.module.css';
+import AllPages from 'common/components/allPages/allPages';
 
 type TerminalState = {
   isOpenReceiptsDialog: boolean;
@@ -81,6 +82,7 @@ const Terminal: React.FC = () => {
   return (
     <Switch>
       <Fragment>
+        <AllPages actions={actions} />
         <Route path={Routes.TerminalOrderCharge}>
           <ChargeDialog
             items={items}

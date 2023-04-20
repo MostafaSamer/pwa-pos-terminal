@@ -42,6 +42,7 @@ export type CategoryActions = {
   remove: (categoryId: string) => void;
   select: (categoryId: string) => void;
   update: (category: Category) => void;
+  updateAll: (category: Category[]) => void;
 };
 
 export type ItemActions = {
