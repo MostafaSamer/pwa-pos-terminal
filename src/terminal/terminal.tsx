@@ -6,8 +6,8 @@ import { Routes } from 'common/enums';
 import { setDocumentTitle } from 'common/utils';
 import { LoadScreen, PrintReceipt } from 'common/components';
 import { Menu, Receipt, ItemList, ItemEditor, ChargeDialog, ReceiptsDialog, ReportDialog, Drawer } from './components';
-import axios from 'common/utils/requestHelper';
 import styles from './terminal.module.css';
+import AllPages from 'common/components/allPages/allPages';
 
 type TerminalState = {
   isOpenReceiptsDialog: boolean;
@@ -31,13 +31,6 @@ const Terminal: React.FC = () => {
     const title = [t('terminal.title')];
     setDocumentTitle(title);
   }, [t]);
-
-  useEffect(() => {
-    axios.get('/items')
-    .then(res => {
-      console.log(res)
-    })
-  }, []);
 
   const updateState = (data: Partial<TerminalState>) => setState({ ...state, ...data });
   const currentOrder = orders.find((order) => currentOrderId === order.id) || null;
@@ -89,6 +82,7 @@ const Terminal: React.FC = () => {
   return (
     <Switch>
       <Fragment>
+        <AllPages actions={actions} />
         <Route path={Routes.TerminalOrderCharge}>
           <ChargeDialog
             items={items}
