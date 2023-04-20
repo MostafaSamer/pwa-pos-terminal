@@ -6,6 +6,7 @@ import { Routes } from 'common/enums';
 import { setDocumentTitle } from 'common/utils';
 import { LoadScreen, PrintReceipt } from 'common/components';
 import { Menu, Receipt, ItemList, ItemEditor, ChargeDialog, ReceiptsDialog, ReportDialog, Drawer } from './components';
+import axios from 'common/utils/requestHelper';
 import styles from './terminal.module.css';
 
 type TerminalState = {
@@ -30,6 +31,13 @@ const Terminal: React.FC = () => {
     const title = [t('terminal.title')];
     setDocumentTitle(title);
   }, [t]);
+
+  useEffect(() => {
+    axios.get('/items')
+    .then(res => {
+      console.log(res)
+    })
+  }, []);
 
   const updateState = (data: Partial<TerminalState>) => setState({ ...state, ...data });
   const currentOrder = orders.find((order) => currentOrderId === order.id) || null;
