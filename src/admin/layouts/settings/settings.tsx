@@ -99,7 +99,6 @@ const Settings: React.FC<SettingsProps> = ({ settings, actions }) => {
           value={settings.lang}
           onChange={(evt) => handleOnChangeOfLanguagePreference(evt.target.value)}
         >
-          <option value="default">{t('common.browserDefault')}</option>
           {supportedLocales.map((lng) => (
             <option key={lng} value={lng}>
               {languageList[lng].nativeName}

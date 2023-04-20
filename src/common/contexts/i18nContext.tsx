@@ -25,18 +25,6 @@ export const I18nContextProvider: React.FC = ({ children }) => {
         .then((data) => data || [])
         .catch(() => []);
 
-      await Promise.all(
-        supportedLocales.map(async (locale) => {
-          const dateFnsLocale = (
-            await import(
-              /* webpackMode: "lazy", webpackChunkName: "datefns-locale-[index]" */
-              `date-fns/locale/${locale}/index.js`
-            )
-          ).default;
-          availableLocales = { ...availableLocales, [locale]: dateFnsLocale };
-        }),
-      );
-
       setSupportedLocales(supportedLocales);
       setDateDnsLocales(availableLocales);
     })();
