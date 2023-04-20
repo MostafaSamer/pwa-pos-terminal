@@ -5,7 +5,7 @@ export type Settings = {
   currencyPosition: CurrencyPosition;
   weekStartsOn: WeekStartDays;
   isDeniedPrintingGuestChecks: boolean;
-  lang: 'default' | string;
+  lang: 'en' | string;
   logo: string;
   logoUrl: string;
   name: string;
