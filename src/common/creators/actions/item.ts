@@ -19,7 +19,6 @@ export const createItemActions: Action<ItemActions> = (state, updateState) => ({
 
   update: (item) => {
     const restItems = [...state.items.filter((entity) => entity.id !== item.id)];
-    console.log("sss: ", updateItem(item))
     updateState({ items: [...restItems, updateItem(item)] });
   },
 
