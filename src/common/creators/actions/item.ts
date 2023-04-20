@@ -23,8 +23,6 @@ export const createItemActions: Action<ItemActions> = (state, updateState) => ({
   },
 
   updateAll: (_items: Item[]) => {
-    console.log({_items})
-    return
     updateState({ items: [..._items] });
   },
 

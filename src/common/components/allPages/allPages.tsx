@@ -10,16 +10,13 @@ type AllPagesProps = {
 const AllPages: React.FC<AllPagesProps> = ({ actions }) => {
   const { i18n } = useTranslation();
 
-  console.log(i18n.language)
-
   useEffect(() => {
     axios.get('/items')
     .then((res: any) => {
-      console.log(res);
       let updatedItems = res.items
       .map((el: any) => {
         return {
-          "id": el.id,
+          "id": ""+el.id,
           "name": el[`name_${i18n.language}`],
           "barcode": "",
           "color": el.color,
@@ -41,7 +38,6 @@ const AllPages: React.FC<AllPagesProps> = ({ actions }) => {
           "taxes": []
         }
       })
-      console.log(updatedItems)
       actions.item.updateAll(updatedItems)
     })
   }, []);
