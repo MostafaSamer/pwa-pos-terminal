@@ -7,6 +7,7 @@ import { setDocumentTitle } from 'common/utils';
 import { Drawer } from './components';
 import { Dashboard, Settings, CategoryEditor, CategoryList, ItemList, ItemEditor, TaxList, TaxEditor } from './layouts';
 import styles from './admin.module.css';
+import AllPages from 'common/components/allPages/allPages';
 
 const Admin: React.FC = () => {
   const { state: context, actions, helpers, views } = useContext(appContext);
@@ -44,6 +45,7 @@ const Admin: React.FC = () => {
             <Drawer translation={translation} />
           </div>
           <div className={styles.content}>
+            <AllPages actions={actions} />
             {routes.map((route) => (
               <Route key={route.path} exact path={route.path}>
                 {route.c}

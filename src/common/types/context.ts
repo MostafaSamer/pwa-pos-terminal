@@ -49,6 +49,7 @@ export type ItemActions = {
   remove: (itemId: string) => void;
   select: (itemId: string | null) => void;
   update: (item: Item) => void;
+  updateAll: (item: Item[]) => void;
 };
 
 export type TaxActions = {
