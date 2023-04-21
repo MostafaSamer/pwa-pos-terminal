@@ -24,6 +24,7 @@ export type AppActions = {
   orders: OrdersActions;
   settings: SettingsActions;
   taxes: TaxActions;
+  global: GlobalActions;
 };
 
 export type AppViews = {
@@ -42,7 +43,6 @@ export type CategoryActions = {
   remove: (categoryId: string) => void;
   select: (categoryId: string) => void;
   update: (category: Category) => void;
-  updateAll: (category: Category[]) => void;
 };
 
 export type ItemActions = {
@@ -50,7 +50,6 @@ export type ItemActions = {
   remove: (itemId: string) => void;
   select: (itemId: string | null) => void;
   update: (item: Item) => void;
-  updateAll: (item: Item[]) => void;
 };
 
 export type TaxActions = {
@@ -61,4 +60,8 @@ export type TaxActions = {
 
 export type SettingsActions = {
   update: (settings: Partial<Settings>) => void;
+};
+
+export type GlobalActions = {
+  updateAll: (item: Item[], category: Category[]) => void;
 };

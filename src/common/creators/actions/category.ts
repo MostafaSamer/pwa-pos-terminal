@@ -33,10 +33,6 @@ export const createCategoryActions: Action<CategoryActions> = (state, updateStat
     updateState({ categories: updCategories });
   },
 
-  updateAll: (_categories: Category[]) => {
-    updateState({ categories: _categories });
-  },
-
   // set active category
   select: (categoryId) => updateState({ currentCategoryId: categoryId }),
 });
