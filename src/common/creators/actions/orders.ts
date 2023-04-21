@@ -32,6 +32,7 @@ export type OrderChargeAction = (
     | 'dateClose'
     | 'isDiscounted'
     | 'totalPaymentAmount'
+    | 'networkStatuses'
   >,
   orderId: string,
 ) => ClosedOrder;

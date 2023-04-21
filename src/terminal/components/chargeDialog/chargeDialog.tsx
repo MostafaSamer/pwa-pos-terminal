@@ -3,11 +3,12 @@ import { toast } from 'react-toastify';
 import { Link, Redirect, useParams } from 'react-router-dom';
 import { unformat, formatMoney } from 'accounting';
 import { useTranslation } from 'react-i18next';
-import { AppActions, Item, Order, OrderClosingReasons, Settings } from 'common/types';
+import { AppActions, Item, Order, OrderClosingReasons, Settings, OrderNetworkStatuses } from 'common/types';
 import { ArrowLeftTwoTone } from 'common/icons';
 import { Routes } from 'common/enums';
 import { Numpad } from '../index';
 import styles from './chargeDialog.module.css';
+import { isOnline } from 'common/utils/network';
 
 type ChargeDialogProps = {
   items: Item[];
@@ -61,6 +62,7 @@ const ChargeDialog: React.FC<ChargeDialogProps> = ({ actions, onPrintReceit, set
       cashChange: hasChange && !isClosedWithoutPayment ? changeAmount : 0,
       isDiscounted: false,
       customerId: 0,
+      networkStatuses: isOnline()? OrderNetworkStatuses.Online : OrderNetworkStatuses.Offline
     };
     actions.orders.charge(chargeData, order.id);
     if (isPrintReceipt) onPrintReceit(order.id);
