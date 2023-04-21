@@ -47,6 +47,7 @@ const Settings: React.FC<SettingsProps> = ({ settings, actions }) => {
       c: (
         <input
           type="text"
+          disabled
           className="form-control"
           value={settings.name}
           onChange={(evt) => actions.settings.update({ name: evt.target.value })}
@@ -61,6 +62,7 @@ const Settings: React.FC<SettingsProps> = ({ settings, actions }) => {
           <input
             className="form-check-input"
             type="checkbox"
+            disabled
             id="SettingsPrintReceiptSwitch"
             checked={settings.printReceiptByDefault}
             onChange={(evt) => actions.settings.update({ printReceiptByDefault: evt.target.checked })}
@@ -79,6 +81,7 @@ const Settings: React.FC<SettingsProps> = ({ settings, actions }) => {
           <input
             className="form-check-input"
             type="checkbox"
+            disabled
             id="SettingsPrintGuestCheckSwitch"
             checked={settings.isDeniedPrintingGuestChecks}
             onChange={(evt) => actions.settings.update({ isDeniedPrintingGuestChecks: evt.target.checked })}
@@ -97,6 +100,7 @@ const Settings: React.FC<SettingsProps> = ({ settings, actions }) => {
         <select
           className="form-select w-auto pr-5"
           value={settings.lang}
+          disabled
           onChange={(evt) => handleOnChangeOfLanguagePreference(evt.target.value)}
         >
           {supportedLocales.map((lng) => (
@@ -114,6 +118,7 @@ const Settings: React.FC<SettingsProps> = ({ settings, actions }) => {
         <select
           className="form-select w-auto pr-5"
           value={settings.weekStartsOn}
+          disabled
           onChange={(evt) => actions.settings.update({ weekStartsOn: parseInt(evt.target.value, 10) })}
         >
           <option value={WeekStartDays.Auto}>{t('common.browserDefault')}</option>
@@ -129,6 +134,7 @@ const Settings: React.FC<SettingsProps> = ({ settings, actions }) => {
       c: (
         <input
           type="text"
+          disabled
           className="form-control w-auto pr-5"
           value={settings.currency}
           onChange={(evt) => actions.settings.update({ currency: evt.target.value })}
@@ -142,6 +148,7 @@ const Settings: React.FC<SettingsProps> = ({ settings, actions }) => {
         <select
           className="form-select w-auto pr-5"
           value={settings.currencyPosition}
+          disabled
           onChange={(evt) => actions.settings.update({ currencyPosition: evt.target.value as CurrencyPosition })}
         >
           <option value={CurrencyPosition.Left}>{`${settings.currency} 123.00`}</option>
