@@ -86,6 +86,7 @@ export const AppContextProvider: React.FC = ({ children }) => {
     item: A.createItemActions(state, updateContext),
     settings: A.createSettingsActions(state, updateContext),
     taxes: A.createTaxActions(state, updateContext),
+    global: A.createGlobalActions(state, updateContext)
   };
 
   const views: AppViews = {

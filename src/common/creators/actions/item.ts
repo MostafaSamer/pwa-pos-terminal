@@ -22,10 +22,6 @@ export const createItemActions: Action<ItemActions> = (state, updateState) => ({
     updateState({ items: [...restItems, updateItem(item)] });
   },
 
-  updateAll: (_items: Item[]) => {
-    updateState({ items: [..._items] });
-  },
-
   remove: (itemId) => {
     const updItems = [...state.items];
     const targetEntity = state.items.findIndex((entity) => itemId === entity.id);

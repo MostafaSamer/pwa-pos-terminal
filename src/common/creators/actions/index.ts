@@ -3,3 +3,4 @@ export * from './item';
 export * from './orders';
 export * from './settings';
 export * from './tax';
+export * from './global';
