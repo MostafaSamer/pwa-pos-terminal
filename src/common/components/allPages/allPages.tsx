@@ -31,6 +31,7 @@ const AllPages: React.FC<AllPagesProps> = ({ actions }) => {
   const getItemsAPI = async () => {
     let res: any = await axios.get('/items');
     let updatedItems = res.items.map((el: any) => {
+      console.log({el})
       return {
         id: '' + el.id,
         name: el[`name_${i18n.language || 'en'}`],
