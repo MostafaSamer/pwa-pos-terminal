@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import axios from 'common/utils/requestHelper';
 import { AppActions } from 'common/types';
 import { useTranslation } from 'react-i18next';
+import { networkStatusOnline }  from 'common/utils/network'
 
 type AllPagesProps = {
   actions: AppActions;
@@ -9,6 +10,12 @@ type AllPagesProps = {
 
 const AllPages: React.FC<AllPagesProps> = ({ actions }) => {
   const { i18n } = useTranslation();
+
+  const getNetworkOnline = (s: any) => {
+    console.log("This app is live again: ",  s);
+  }
+
+  networkStatusOnline(getNetworkOnline);
 
   const getCategoriesAPI = async () => {
     let res: any = await axios.get('/categories');
