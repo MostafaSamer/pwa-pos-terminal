@@ -12,7 +12,8 @@ const AllPages: React.FC<AllPagesProps> = ({ actions }) => {
   const { i18n } = useTranslation();
 
   const getNetworkOnline = (s: any) => {
-    console.log("This app is live again: ",  s);
+    let closedOrders = actions.orders.backOnline();
+    if(closedOrders.length) console.log({closedOrders})
   }
 
   networkStatusOnline(getNetworkOnline);
