@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'common/utils/requestHelper';
 import { AppActions } from 'common/types';
 import { useTranslation } from 'react-i18next';
@@ -12,8 +12,8 @@ const AllPages: React.FC<AllPagesProps> = ({ actions }) => {
   const { i18n } = useTranslation();
 
   const getNetworkOnline = (s: any) => {
-    let closedOrders = actions.orders.backOnline();
-    if(closedOrders.length) console.log({closedOrders})
+    let closedOrder = actions.orders.backOnline();
+    if(closedOrder.length) axios.post('/orders', closedOrder)
   }
 
   networkStatusOnline(getNetworkOnline);

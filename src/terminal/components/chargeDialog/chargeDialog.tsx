@@ -9,6 +9,7 @@ import { Routes } from 'common/enums';
 import { Numpad } from '../index';
 import styles from './chargeDialog.module.css';
 import { isOnline } from 'common/utils/network';
+import axios from 'common/utils/requestHelper'
 
 type ChargeDialogProps = {
   items: Item[];
@@ -64,7 +65,8 @@ const ChargeDialog: React.FC<ChargeDialogProps> = ({ actions, onPrintReceit, set
       customerId: 0,
       networkStatuses: isOnline()? OrderNetworkStatuses.Online : OrderNetworkStatuses.Offline
     };
-    actions.orders.charge(chargeData, order.id);
+    let closedOrder = actions.orders.charge(chargeData, order.id);
+    if(closedOrder.networkStatuses === OrderNetworkStatuses.Online) axios.post('/orders', closedOrder);
     if (isPrintReceipt) onPrintReceit(order.id);
     closeDialog();
   };
