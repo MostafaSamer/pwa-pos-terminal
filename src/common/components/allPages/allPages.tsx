@@ -10,6 +10,7 @@ type AllPagesProps = {
 
 const AllPages: React.FC<AllPagesProps> = ({ actions }) => {
   const { i18n } = useTranslation();
+  document.body.dir = i18n.language? i18n.dir() : 'ltr';
 
   const getNetworkOnline = (s: any) => {
     let closedOrder = actions.orders.backOnline();
