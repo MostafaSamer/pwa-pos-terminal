@@ -68,9 +68,9 @@ const AllPages: React.FC<AllPagesProps> = ({ actions }) => {
 
   const getSettingsAPI = async () => {
     // let res: any = await axios.get('/settings');
-    if(true) i18n.changeLanguage('ar');
+    if(true) i18n.changeLanguage('en');
     return {
-      lang: 'ar'
+      lang: 'en'
     }
   };
 
