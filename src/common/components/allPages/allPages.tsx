@@ -48,7 +48,7 @@ const AllPages: React.FC<AllPagesProps> = ({ actions }) => {
         extras: [],
         hasModificationsPrices: false,
         modifications: [],
-        parentId: 'root',
+        parentId: el.parentid,
         picture: el.picture,
         price: el.price,
         costPrice: el.price,
