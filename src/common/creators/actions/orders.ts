@@ -10,6 +10,7 @@ import {
   Optional,
   Order,
   OrderItem,
+  OrderNetworkStatuses,
   OrderStatuses,
   TaxRecord,
 } from 'common/types';
@@ -32,6 +33,7 @@ export type OrderChargeAction = (
     | 'dateClose'
     | 'isDiscounted'
     | 'totalPaymentAmount'
+    | 'networkStatuses'
   >,
   orderId: string,
 ) => ClosedOrder;
@@ -41,6 +43,7 @@ export type OrdersActions = {
   addItem: (product: Item, orderId?: string) => void;
   charge: OrderChargeAction;
   select: (orderId: string) => void;
+  backOnline: () => ClosedOrder[];
   updateSelected: (order: Order) => void;
   findById: (orderId: string) => Order | null;
 };
@@ -171,6 +174,16 @@ export const createOrdersActions: Action<OrdersActions> = (state, updateState) =
     const updClosedOrders: ClosedOrder[] = [closedOrder, ...state.closedOrders];
     updateState({ orders: updOrders, closedOrders: updClosedOrders, currentItemId: null, currentOrderId: null });
     return closedOrder;
+  },
+
+  // clean all the offline orders
+  backOnline: () => {
+    let closedOrders  = state.closedOrders.slice(0, state.closedOrders.findIndex(obj => obj.networkStatuses === "online"));
+    closedOrders = closedOrders.map(el => {
+      el.networkStatuses = OrderNetworkStatuses.Online
+      return el;
+    })
+    return closedOrders;
   },
 
   // Updates current order data

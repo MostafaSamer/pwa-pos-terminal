@@ -2,7 +2,7 @@ import { subDays, eachDayOfInterval, addHours } from 'date-fns';
 import { Entities } from 'common/enums';
 import { INIT_STATE } from 'common/assets';
 import { getRandomInt, sumByProp, getTimestamp } from 'common/utils';
-import { AppState, Item, OrderClosingReasons } from 'common/types';
+import { AppState, Item, OrderClosingReasons, OrderNetworkStatuses } from 'common/types';
 import { createItemActions, createCategoryActions, createTaxActions, createOrdersActions } from 'common/creators';
 import * as I from './images';
 
@@ -165,6 +165,7 @@ export function getDemoData(): AppState {
           isDiscounted: false,
           totalPaymentAmount: paymentAmount,
           dateClose: getTimestamp(addHours(day, getRandomInt(0, 23))),
+          networkStatuses: OrderNetworkStatuses.Online
         },
         order.id,
       );

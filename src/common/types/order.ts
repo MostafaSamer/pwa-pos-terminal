@@ -12,6 +12,11 @@ export enum OrderClosingReasons {
   Mistake = 3,
 }
 
+export enum OrderNetworkStatuses {
+  Online = 'online',
+  Offline = 'offline',
+}
+
 export type Order = {
   appliedTaxes: TaxRecord[];
   cardPaymentAmount: number;
@@ -60,6 +65,7 @@ export interface ClosedOrder extends Order {
   cashChange: number;
   profit: number;
   items: ClosedOrderItem[];
+  networkStatuses: OrderNetworkStatuses;
 }
 
 export type OrderItem = {
