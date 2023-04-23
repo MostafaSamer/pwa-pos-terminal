@@ -66,13 +66,22 @@ const AllPages: React.FC<AllPagesProps> = ({ actions }) => {
     return updatedItems;
   };
 
+  const getSettingsAPI = async () => {
+    // let res: any = await axios.get('/settings');
+    if(true) i18n.changeLanguage('ar');
+    return {
+      lang: 'ar'
+    }
+  };
+
   useEffect(() => {
     Promise.all([
       getCategoriesAPI(),
       getItemsAPI(),
+      getSettingsAPI(),
     ])
     .then((res) => {
-      actions.global.updateAll(res[0], res[1]);
+      actions.global.updateAll(res[0], res[1], res[2]);
     })
   }, []);
 

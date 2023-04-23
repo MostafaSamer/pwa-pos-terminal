@@ -63,5 +63,5 @@ export type SettingsActions = {
 };
 
 export type GlobalActions = {
-  updateAll: (category: Category[], item: Item[]) => void;
+  updateAll: (category: Category[], item: Item[], settings: Partial<Settings>) => void;
 };
