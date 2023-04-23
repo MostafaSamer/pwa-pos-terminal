@@ -178,12 +178,15 @@ export const createOrdersActions: Action<OrdersActions> = (state, updateState) =
 
   // clean all the offline orders
   backOnline: () => {
-    let closedOrders  = state.closedOrders.slice(0, state.closedOrders.findIndex(obj => obj.networkStatuses === "online"));
-    closedOrders = closedOrders.map(el => {
-      el.networkStatuses = OrderNetworkStatuses.Online
-      return el;
-    })
-    return closedOrders;
+    const closedOfflineOrders = state.closedOrders.filter(el => el.networkStatuses === OrderNetworkStatuses.Offline);
+    if (closedOfflineOrders.length) {
+      let updClosedOrders = state.closedOrders.map(el => {
+        el.networkStatuses = OrderNetworkStatuses.Online
+        return el;
+      });
+      updateState({ closedOrders: updClosedOrders });
+    }
+    return closedOfflineOrders;
   },
 
   // Updates current order data
